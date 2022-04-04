@@ -47,25 +47,9 @@ class Register(Resource):
 
         data = results.pandas().xyxy[0].to_json(orient="records")
 
-        # results.render()  # updates results.imgs with boxes and labels
-        # for img in results.imgs:
-        #     img_base64 = Image.fromarray(img)
-        #     img_base64.save("static/detected_imgs/image0.jpg", format="JPEG")
-
-        # data = results.pandas().xyxy[0].to_json(orient="records")
-        # print(data)
-        # {
-        #     filename : ' ',
-        #     test : ''
-        # }
-    # return redirect(url_for("mealinfo"))
-    # return render_template("mealinfo.html", data=data)
-
-        # d.save('backend/static/' + d.filename)
-
         ImageTable.add_image(
             user_email, f'{filename[0]}.jpeg')
         result = ImageTable.get_image(user_email)[-1].image
-        print(result)
+        print('test')
 
         return result
