@@ -51,5 +51,6 @@ class Register(Resource):
             user_email, f'{filename[0]}.jpeg')
         result = ImageTable.get_image(user_email)[-1].image
         print(result)
+        print('왜 안되는걸까')
 
         return result
