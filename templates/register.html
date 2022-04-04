@@ -1,17 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div id="app">
-  <div class="box">
-    <h1 style="margin-bottom: 50px;">회원가입</h1>
-
-    <input type="text" name="Email" placeholder="이메일" required="required" style="margin-bottom: 20px;" />
-    <input type="text" name="name" placeholder="성명" required="required" style="margin-bottom: 20px;" />
-    <input type="password" name="pw" placeholder="비밀번호" required="required" style="margin-bottom: 20px;" />
-    <input type="password" name="pw2" placeholder="비밀번호 확인" required="required" style="margin-bottom: 20px;" />
-    <button type="submit" class="custom-btn btn-11 btn-large" style="float:right">가입완료</button>
-
-  </div>
+<div class="box" id="app">
+  <h1 style="margin-bottom: 50px;">회원가입</h1>
+      <input type="email" id="user_email" name="Email" placeholder="이메일" required="required" style="margin-bottom: 20px;" required autofocus/>
+      <input type="text" id="user_name" name="name" placeholder="성명" required="required" style="margin-bottom: 20px;"/>
+      <input type="password" id="user_pw" name="pw" placeholder="비밀번호" required="required" style="margin-bottom: 20px;"/>
+      <input type="password" id="user_pw2" name="pw2" placeholder="비밀번호 확인" required="required" style="margin-bottom: 20px;"/>
+      <button type="submit" class="custom-btn btn-11 btn-large" style="float:right" v-on:click="test_post()">가입완료</button>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -37,10 +33,10 @@
             if (response.data == true) {
               localStorage.setItem('token', response.data['token']);
               alert('login success');
-              window.location.href = 'http://localhost:8989/mainpage';
+              window.location.href = 'http://localhost:2888/mainpage';
             } else {
               alert('change ID');
-              window.location.href = 'http://localhost:8989/login';
+              window.location.href = 'http://localhost:2888/login';
             }
           })
           .catch((error) => {
@@ -109,10 +105,10 @@
             console.log(response.data)
             if (response.data == true) {
               alert('See you later');
-              window.location.href = 'http://localhost:8989/';
+              window.location.href = 'http://localhost:2888/login';
             } else {
               alert('retry');
-              window.location.href = 'http://localhost:8989/login';
+              window.location.href = 'http://localhost:2888/login';
             }
           })
           .catch((error) => {
