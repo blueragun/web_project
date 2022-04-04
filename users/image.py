@@ -22,7 +22,7 @@ class Register(Resource):
         args = parser.parse_args()
 
         model = torch.hub.load(
-            "project0401/yolov5_models/yolov5", "custom", path='project0401/yolov5_models/AFv1.pt', source='local', force_reload=True)
+            "backend/yolov5_models/yolov5", "custom", path='backend/yolov5_models/AFv1.pt', source='local', force_reload=True)
         # model.names =  ['쌀밥', '된장찌개', '족발', '돈가스', '배추김치']
         # force_reload = recache latest code
 
