@@ -38,4 +38,4 @@ api.add_namespace(image, '/image')
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port='8999')
+    app.run(debug=True, host='0.0.0.0', port='8992')
