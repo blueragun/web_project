@@ -11,12 +11,15 @@ mainpage = Namespace('mainpage')
 class Mainpage(Resource):
     def get(self):
         if 'token' in session:
-            user_data = request.cookies.get('user_email').split('%40')
-            user_email = user_data[0] + '@' + user_data[1]
-            user = user_info_table.search(user_email)
-            sex = user[-1].sex
-            age = user[-1].age
-            result = Calorie_model.get(sex, age)
+            try:
+                user_data = request.cookies.get('user_email').split('%40')
+                user_email = user_data[0] + '@' + user_data[1]
+                user = user_info_table.search(user_email)
+                sex = user[-1].sex
+                age = user[-1].age
+                result = Calorie_model.get(sex, age)
+            except:
+                result = [0] * 20
             print(result)
 
             print(session)

@@ -171,30 +171,7 @@
   const app = new Vue({
     el: "#app",
     methods: {
-      test_get: () => {
-        axios("http://13.112.232.65:8999/user/", {
-          method: "post",
-          data: {
-            user_id: document.getElementById('user_id').value,
-            user_pw: document.getElementById('user_pw').value,
-            token: localStorage.getItem('token')
-          },
-        })
-          .then((response) => {
-            console.log(response.data)
-            if (response.data == true) {
-              localStorage.setItem('token', response.data['token']);
-              alert('login success');
-              window.location.href = 'http://localhost:8989/mainpage';
-            } else {
-              alert('change ID');
-              window.location.href = 'http://localhost:8989/login';
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      },
+
       test_post: () => {
         axios("http://13.112.232.65:8999/user_info/", {
           method: "post",
@@ -220,46 +197,8 @@
           });
       },
 
-      test_put: () => {
-        axios("http://13.112.232.65:8999/user_account/", {
-          method: "put",
-          data: {
-            user_email: document.getElementById('user_email').value,
-            user_pw: document.getElementById('user_pw').value,
-          },
-        })
-          .then((response) => {
-            console.log(response.data)
-            if (response.data['status'] == true) {
-              alert('welcome');
-              window.location.href = 'http://localhost:2888/mainpage';
-            } else {
-              alert('change ID');
-              window.location.href = 'http://localhost:2888/login';
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      },
-      test_delete: () => {
-        axios("http://13.112.232.65:8999/user/", {
-          method: "delete",
-        })
-          .then((response) => {
-            console.log(response.data)
-            if (response.data == true) {
-              alert('See you later');
-              window.location.href = 'http://localhost:8989/';
-            } else {
-              alert('retry');
-              window.location.href = 'http://localhost:8989/login';
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      },
+
+
     },
   });
 </script>

@@ -266,28 +266,7 @@
 
 <script src="http://madalla.kr/js/jquery-1.8.3.min.js"></script>
 
-<!-- <script type="text/javascript">
-  function readImage(input) {
-    // 인풋 태그에 파일이 있는 경우
-    if (input.files && input.files[0]) {
-      // 이미지 파일인지 검사 (생략)
-      // FileReader 인스턴스 생성
-      const reader = new FileReader()
-      // 이미지가 로드가 된 경우
-      reader.onload = e => {
-        const previewImage = document.getElementById("preview-image")
-        previewImage.src = e.target.result
-      }
-      // reader가 이미지 읽도록 하기
-      reader.readAsDataURL(input.files[0])
-    }
-  }
-  // input file에 change 이벤트 부여
-  const inputImage = document.getElementById("input-image")
-  inputImage.addEventListener("change", e => {
-    readImage(e.target)
-  })
-</script> -->
+
 
 
 
@@ -295,28 +274,6 @@
   const app = new Vue({
     el: "#app",
     methods: {
-      test_get: () => {
-        axios("http://13.112.232.65:8999/user/", {
-          method: "post",
-          data: {
-            user_email: decodeURIComponent(document.cookie),
-          },
-        })
-          .then((response) => {
-            console.log(response.data)
-            if (response.data == true) {
-              localStorage.setItem('token', response.data['token']);
-              alert('login success');
-              window.location.href = 'http://localhost:8989/mainpage';
-            } else {
-              alert('change ID');
-              window.location.href = 'http://localhost:8989/login';
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      },
       test_post: () => {
         axios("http://13.112.232.65:8999/calorie/", {
           method: "post",
@@ -326,20 +283,6 @@
         })
           .then((response) => {
             localStorage.clear()
-            // document.getElementById("value1").innerHTML = response.data[2];
-            // document.getElementById("value2").innerHTML = response.data[4];
-            // document.getElementById("value3").innerHTML = response.data[5];
-            // document.getElementById("value4").innerHTML = response.data[6];
-            // document.getElementById("value5").innerHTML = response.data[7];
-            // document.getElementById("value6").innerHTML = response.data[8];
-            // document.getElementById("value7").innerHTML = response.data[9];
-            // document.getElementById("value8").innerHTML = response.data[10];
-            // document.getElementById("value9").innerHTML = response.data[11];
-            // document.getElementById("value10").innerHTML = response.data[12];
-            // document.getElementById("value11").innerHTML = response.data[13];
-            // document.getElementById("value12").innerHTML = response.data[14];
-            // document.getElementById("value13").innerHTML = response.data[15];
-            // document.getElementById("value14").innerHTML = response.data[16];
 
             localStorage.setItem('value1', response.data[2]);
             localStorage.setItem('value2', response.data[4]);
@@ -361,59 +304,10 @@
           });
       },
 
-      test_put: () => {
-        axios("http://13.112.232.65:8999/image", {
-          method: "put",
-          data: {
-            user_email: decodeURIComponent(document.cookie),
-          },
 
-        })
-          .then((response) => {
-            console.log(response.data)
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      },
-      test_delete: () => {
-        axios("http://13.112.232.65:8999/user/", {
-          method: "delete",
-        })
-          .then((response) => {
-            console.log(response.data)
-            if (response.data == true) {
-              alert('See you later');
-              window.location.href = 'http://localhost:8989/';
-            } else {
-              alert('retry');
-              window.location.href = 'http://localhost:8989/login';
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      },
     },
   });
 </script>
 
-<!-- <script>
-
-  document.getElementById("value1").innerHTML = localStorage.getItem('value1');
-  document.getElementById("value2").innerHTML = localStorage.getItem('value2');
-  document.getElementById("value3").innerHTML = localStorage.getItem('value3');
-  document.getElementById("value4").innerHTML = localStorage.getItem('value4');
-  document.getElementById("value5").innerHTML = localStorage.getItem('value5');
-  document.getElementById("value6").innerHTML = localStorage.getItem('value6');
-  document.getElementById("value7").innerHTML = localStorage.getItem('value7');
-  document.getElementById("value8").innerHTML = localStorage.getItem('value8');
-  document.getElementById("value9").innerHTML = localStorage.getItem('value9');
-  document.getElementById("value10").innerHTML = localStorage.getItem('value10');
-  document.getElementById("value11").innerHTML = localStorage.getItem('value11');
-  document.getElementById("value12").innerHTML = localStorage.getItem('value12');
-  document.getElementById("value13").innerHTML = localStorage.getItem('value13');
-  document.getElementById("value14").innerHTML = localStorage.getItem('value14');
-</script> -->
 
 {% endblock %}
