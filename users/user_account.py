@@ -71,7 +71,7 @@ class UserAccount(Resource):
         '''userid 회원가입 true false tag id = user_id2, user_pw2'''
         user_email = request.json['user_email']
         user_name = request.json['user_name']
-        user_pw = request.json['user_pw']
+        user_pw = request.json['user_pw1']
         user_pw2 = request.json['user_pw2']
         if user_pw != user_pw2:
             return ({'massage': 'pw difference', 'status': False})
