@@ -22,7 +22,7 @@ class Register(Resource):
         args = parser.parse_args()
 
         model = torch.hub.load(
-            "backend/yolov5_models/yolov5", "custom", path='backend/yolov5_models/AFv1.pt', source='local', force_reload=True)
+            "web_project/yolov5_models/yolov5", "custom", path='web_project/yolov5_models/AFv1.pt', source='local', force_reload=True)
         # model.names =  ['쌀밥', '된장찌개', '족발', '돈가스', '배추김치']
         # force_reload = recache latest code
 
@@ -43,7 +43,7 @@ class Register(Resource):
             img_base64 = Image.fromarray(img)
             filename = d.filename.split('.jpg')
             img_base64.save(
-                f"backend/static/{filename[0]}.jpeg", format="JPEG")
+                f"web_project/static/{filename[0]}.jpeg", format="JPEG")
 
         data = results.pandas().xyxy[0].to_json(orient="records")
 

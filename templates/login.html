@@ -10,12 +10,14 @@
         {% endfor %}
      {% endif %}
   {% endwith %}
-    <input type="email" id="user_email" name="user_email" placeholder="이메일" required="required" />
-    <input type="password" id="user_pw" name="pw" placeholder="비밀번호" required="required" />
-    <div class="pagination">
-      <button type="button" class="custom-btn btn-11 btn-large" onclick="location.href='register'">회원가입</button>
-      <button type="submit" class="custom-btn btn-11 btn-large" v-on:click="test_post()">로그인</button>
-    </div>
+
+  <input type="email" id="user_email" name="user_email" placeholder="이메일" required="required" />
+  <input type="password" id="user_pw" name="pw" placeholder="비밀번호" required="required" />
+  <div class="pagination">
+    <button type="button" class="custom-btn btn-11 btn-large" onclick="location.href='register'">회원가입</button>
+    <button type="submit" class="custom-btn btn-11 btn-large" v-on:click="test_post()">로그인</button>
+  </div>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
