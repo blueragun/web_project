@@ -50,5 +50,6 @@ class Register(Resource):
         ImageTable.add_image(
             user_email, f'{filename[0]}.jpeg')
         result = ImageTable.get_image(user_email)[-1].image
+        print('test')
 
         return result
