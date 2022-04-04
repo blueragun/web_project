@@ -4,45 +4,20 @@
 <div class="box" id="app">
   <h1>로그인</h1>
   {% with messages = get_flashed_messages() %}
-  {% if messages %}
-  {% for message in messages %}
-  <p>{{ message }}</p>
-  {% endfor %}
-  {% endif %}
+     {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+     {% endif %}
   {% endwith %}
-  <!-- <form action="/check" method="post"> -->
-  <!-- <input type="text" id="user_id" name="user_id" placeholder="이메일" required="required"/> -->
-  <input type="email" id="user_email" name="user_email" placeholder="이메일" required="required" />
-  <input type="password" id="user_pw" name="pw" placeholder="비밀번호" required="required" />
-  <div class="pagination">
-    <button type="button" class="custom-btn btn-11 btn-large" onclick="location.href='register'">회원가입</button>
-    <button type="submit" class="custom-btn btn-11 btn-large" v-on:click="test_post()">로그인</button>
-  </div>
-  <!-- </form> -->
+    <input type="email" id="user_email" name="user_email" placeholder="이메일" required="required" />
+    <input type="password" id="user_pw" name="pw" placeholder="비밀번호" required="required" />
+    <div class="pagination">
+      <button type="button" class="custom-btn btn-11 btn-large" onclick="location.href='register'">회원가입</button>
+      <button type="submit" class="custom-btn btn-11 btn-large" v-on:click="test_post()">로그인</button>
+    </div>
 </div>
 
-<!-- <div id="app">
-  <br />
-  <center>
-    <input type="text" id="user_id">
-    <input type="text" id="user_pw">
-    <button type="button" class="btn btn-secondary" v-on:click="test_post()">
-      POST
-    </button>
-
-    <input type="text" id="user_id2">
-    <input type="text" id="user_pw2">
-    <button type="button" class="btn btn-secondary" v-on:click="test_put()">
-      PUT
-    </button>
-
-    <button type="button" class="btn btn-secondary" v-on:click="test_delete()">
-      DELETE
-    </button>
-  </center>
-</div> -->
-
-<!-- Vue Start -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -65,10 +40,10 @@
             if (response.data == true) {
               localStorage.setItem('token', response.data['token']);
               alert('login success');
-              window.location.href = 'http://localhost:8989/mainpage';
+              window.location.href = 'http://13.112.232.65:2888/mainpage';
             } else {
               alert('change ID');
-              window.location.href = 'http://localhost:8989/login';
+              window.location.href = 'http://13.112.232.65:2888/login';
             }
           })
           .catch((error) => {
@@ -92,14 +67,14 @@
               localStorage.setItem('user_email', response.data['user_email'])
 
               alert('login success');
-              window.location.href = 'http://localhost:8999/mainpage/test';
+              window.location.href = 'http://13.112.232.65:2888/mainpage/test';
             } else {
               if (response.data['massage'] == 'ID') {
                 alert('change ID');
-                window.location.href = 'http://localhost:8999/mainpage/login';
+                window.location.href = 'http://13.112.232.65:2888/mainpage/login';
               } else {
                 alert('change PW');
-                window.location.href = 'http://localhost:8999/mainpage/login';
+                window.location.href = 'http://13.112.232.65:2888/mainpage/login';
               }
 
             }
@@ -121,10 +96,10 @@
             console.log(response.data)
             if (response.data['status'] == true) {
               alert('welcome');
-              window.location.href = 'http://localhost:2888/mainpage';
+              window.location.href = 'http://13.112.232.65:2888/mainpage';
             } else {
               alert('change ID');
-              window.location.href = 'http://localhost:2888/login';
+              window.location.href = 'http://13.112.232.65:2888/login';
             }
           })
           .catch((error) => {
@@ -139,10 +114,10 @@
             console.log(response.data)
             if (response.data == true) {
               alert('See you later');
-              window.location.href = 'http://localhost:8989/';
+              window.location.href = 'http://localhost:2888/login';
             } else {
               alert('retry');
-              window.location.href = 'http://localhost:8989/login';
+              window.location.href = 'http://localhost:2888/login';
             }
           })
           .catch((error) => {
