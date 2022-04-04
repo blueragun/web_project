@@ -8,7 +8,6 @@ from users.cal import calorie
 from users.image import image
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
-from flask_marshmallow import Marshmallow
 from controll.user_account_model import user_account_db
 from controll.user_info_model import user_info_db
 from controll.image_model import image_db
@@ -16,7 +15,7 @@ from controll.image_model import image_db
 
 app = Flask(__name__)
 app.secret_key = 'any random string'
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://lab05:lab05@localhost:3306/user"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://lab03:lab03@localhost:3306/user"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)
 api = Api(app)
