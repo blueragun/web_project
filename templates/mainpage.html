@@ -6,274 +6,201 @@
   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <div class="container">
 
-
-  <div class="box_1" id="jb-container">
+  <div class="box_7">
     <h1> 오늘의 식단은? </h1>
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <!-- {% for x in value%}
-          <p>
-            <img src="{{ url_for('static', filename = x.image) }}" class="img-thumbnail" alt="Cinque Terre" width="175"
-              height="175">
-          </p>
-          {% endfor %} -->
-        <!-- <p>
-          <div class="image-container">
-            <img style="width: 700px; height:auto;" id="preview-image" src="http://placeimg.com/480/480/nature">
-            <input style="display: block;" type="file" id="input-image">
-            <button class="custom-btn btn-9" style="float:right" onclick="location.href='/' ">취소</button>
-            <button class="custom-btn btn-9" style="float:right"
-              onclick="return confirm('제출 성공! \n업로드한 이미지를 확인합니다.');">제출</button>
-          </div>
-          </p> -->
-
-
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-
-
-        <div id="yabanner"></div>
-
-        <form id="uploadForm" enctype="multipart/form-data">
-          <input type="file" id="imageInput" />
-        </form>
-        <hr />
-        <button onclick="upload()">
-          업로드
-        </button>
-
-        <script>
-          function upload() {
-            const imageInput = $("#imageInput")[0];
-            // 파일을 여러개 선택할 수 있으므로 files 라는 객체에 담긴다.
-            console.log("imageInput: ", imageInput.files)
-
-            if (imageInput.files.length === 0) {
-              alert("파일은 선택해주세요");
-              return;
-            }
-
-            const formData = new FormData();
-            formData.append("image", imageInput.files[0]);
-            formData.append("user_email", decodeURIComponent(document.cookie));
-
-
-
-
-            $.ajax({
-              type: "POST",
-              url: "http://13.112.232.65:8999/image/",
-              processData: false,
-              contentType: false,
-              data: formData,
-              success: function (rtn) {
-                console.log("rtn: ", rtn)
-                yaGetBanner();
-                function yaGetBanner() {
-                  var el = document.getElementById("yabanner");
-                  var test = '/static/9.w.jpg'
-                  el.innerHTML = "<img src='/static/" + rtn + "' alt='test' width='300px' height='300px'/>";
-                }
-              },
-              err: function (err) {
-                console.log("err:", err)
-              }
-            })
-          }
-        </script>
-
-
-      </li>
-    </ul>
+      <form id="uploadForm" enctype="multipart/form-data">
+        <div class="box_1 box7">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                   <div id="yabanner"></div>
+                      <img style="width: 90%; height:700px" id="preview-image" src="https://p4.wallpaperbetter.com/wallpaper/565/506/328/sports-wallpaper-preview.jpg">
+                      <input type="file" id="imageInput" />
+                </li>
+            </ul>
+        </div>
+        <button class="custom-btn btn-10" type="submit" style="float:right" onclick="location.href=''">결과보기</button>
+        <button class="custom-btn btn-10" type="submit" style="float:right" onclick="upload()">업로드</button>
+      </form>
+  </div>    
+  <div class="box_2">
+    <h1> Graph of the week </h1>
+        <div class="box_3 box2">
+        </div>   
   </div>
-
   <div class="box_6">
     <h1> Today Calories </h1>
-    <style type="text/css">
-      .tg {
-        border-collapse: collapse;
-        border-color: #aabcfe;
-        border-spacing: 0;
-      }
+        <div class="box_3 box6">
+            <style type="text/css">
+            .tg  {border-collapse:collapse;border-color:#aabcfe;border-spacing:0;}
+            .tg td{background-color:#e8edff;border-color:#aabcfe;border-style:solid;border-width:1px;color:#669;
+              font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+            .tg th{background-color:#b9c9fe;border-color:#aabcfe;border-style:solid;border-width:1px;color:#039;
+              font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+            .tg .tg-ss6j{font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif:important; font-weight:bold; text-align:center;
+              vertical-align:top}
+            </style>
+            <table class="tg" width="100%" height="100%">
+              <thead>
+                <tr>
+                  <th class="tg-ss6j">구분</th>
+                  <th class="tg-ss6j">기준표</th>
+                  <th class="tg-ss6j">오늘 기준</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="tg-ss6j">칼로리</td>
+                  <td class="tg-ss6j">
+                    <!-- <p id="value1"></p> -->
+                    {{ cal_data[2] }}
+                  </td>
+                  <td class="tg-ss6j"></td>
 
-      .tg td {
-        background-color: #e8edff;
-        border-color: #aabcfe;
-        border-style: solid;
-        border-width: 1px;
-        color: #669;
-        font-family: Arial, sans-serif;
-        font-size: 14px;
-        overflow: hidden;
-        padding: 10px 5px;
-        word-break: normal;
-      }
-
-      .tg th {
-        background-color: #b9c9fe;
-        border-color: #aabcfe;
-        border-style: solid;
-        border-width: 1px;
-        color: #039;
-        font-family: Arial, sans-serif;
-        font-size: 14px;
-        font-weight: normal;
-        overflow: hidden;
-        padding: 10px 5px;
-        word-break: normal;
-      }
-
-      .tg .tg-ss6j {
-        font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif !important;
-        font-weight: bold;
-        text-align: center;
-        vertical-align: top
-      }
-    </style>
-
-    <table class="tg" width="100%" height="100%" id="jb-sidebar">
-      <thead>
-        <tr>
-          <th class="tg-ss6j">구분</th>
-          <th class="tg-ss6j">기준표</th>
-          <th class="tg-ss6j">오늘 기준</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="tg-ss6j">칼로리</td>
-          <td class="tg-ss6j">
-            <!-- <p id="value1"></p> -->
-            {{ cal_data[2] }}
-          </td>
-          <td class="tg-ss6j"></td>
-
-        </tr>
-        <tr>
-          <td class="tg-ss6j">탄수화물</td>
-          <td class="tg-ss6j">
-            <!-- <p id="value2"></p> -->
-            {{ cal_data[4] }}
-          </td>
-          <td class="tg-ss6j"></td>
-        </tr>
-        <tr>
-          <td class="tg-ss6j">당류(g)</td>
-          <td class="tg-ss6j">
-            <!-- <p id="value3"></p> -->
-            {{ cal_data[5] }}
-          </td>
-          <td class="tg-ss6j"></td>
-        </tr>
-        <tr>
-          <td class="tg-ss6j">지방(g)</td>
-          <td class="tg-ss6j">
-            <!-- <p id="value4"></p> -->
-            {{ cal_data[6] }}
-          </td>
-          <td class="tg-ss6j"></td>
-        </tr>
-        <tr>
-          <td class="tg-ss6j">단백질(g)</td>
-          <td class="tg-ss6j">
-            <!-- <p id="value5"></p> -->
-            {{ cal_data[7] }}
-          </td>
-          <td class="tg-ss6j"></td>
-        </tr>
-        <tr>
-          <td class="tg-ss6j">칼슘(mg)</td>
-          <td class="tg-ss6j">
-            <!-- <p id="value6"></p> -->
-            {{ cal_data[8] }}
-          </td>
-          <td class="tg-ss6j"></td>
-        </tr>
-        <tr>
-          <td class="tg-ss6j">인(mg)</td>
-          <td class="tg-ss6j">
-            <!-- <p id="value7"></p> -->
-            {{ cal_data[9] }}
-          </td>
-          <td class="tg-ss6j"></td>
-        </tr>
-        <tr>
-          <td class="tg-ss6j">나트륨(mg)</td>
-          <td class="tg-ss6j">
-            <!-- <p id="value8"></p> -->
-            {{ cal_data[10] }}
-          </td>
-          <td class="tg-ss6j"></td>
-        </tr>
-        <tr>
-          <td class="tg-ss6j">칼륨(mg)</td>
-          <td class="tg-ss6j">
-            <!-- <p id="value9"></p> -->
-            {{ cal_data[11] }}
-          </td>
-          <td class="tg-ss6j"></td>
-        </tr>
-        <tr>
-          <td class="tg-ss6j">마그네슘(mg)</td>
-          <td class="tg-ss6j">
-            <!-- <p id="value10"></p> -->
-            {{ cal_data[12] }}
-          </td>
-          <td class="tg-ss6j"></td>
-        </tr>
-        <tr>
-          <td class="tg-ss6j">철(mg)</td>
-          <td class="tg-ss6j">
-            <!-- <p id="value11"></p> -->
-            {{ cal_data[13] }}
-          </td>
-          <td class="tg-ss6j"></td>
-        </tr>
-        <tr>
-          <td class="tg-ss6j">아연(mg)</td>
-          <td class="tg-ss6j">
-            <!-- <p id="value12"></p> -->
-            {{ cal_data[14] }}
-          </td>
-          <td class="tg-ss6j"></td>
-        </tr>
-        <tr>
-          <td class="tg-ss6j">콜레스테롤(g)</td>
-          <td class="tg-ss6j">
-            <!-- <p id="value13"></p> -->
-            {{ cal_data[15] }}
-          </td>
-          <td class="tg-ss6j"></td>
-        </tr>
-        <tr>
-          <td class="tg-ss6j">트랜스지방(g)</td>
-          <td class="tg-ss6j">
-            <!-- <p id="value14"></p> -->
-            {{ cal_data[16] }}
-          </td>
-          <td class="tg-ss6j"></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+                </tr>
+                <tr>
+                  <td class="tg-ss6j">탄수화물</td>
+                  <td class="tg-ss6j">
+                    <!-- <p id="value2"></p> -->
+                    {{ cal_data[4] }}
+                  </td>
+                  <td class="tg-ss6j"></td>
+                </tr>
+                <tr>
+                  <td class="tg-ss6j">당류(g)</td>
+                  <td class="tg-ss6j">
+                    <!-- <p id="value3"></p> -->
+                    {{ cal_data[5] }}
+                  </td>
+                  <td class="tg-ss6j"></td>
+                </tr>
+                <tr>
+                  <td class="tg-ss6j">지방(g)</td>
+                  <td class="tg-ss6j">
+                    <!-- <p id="value4"></p> -->
+                    {{ cal_data[6] }}
+                  </td>
+                  <td class="tg-ss6j"></td>
+                </tr>
+                <tr>
+                  <td class="tg-ss6j">단백질(g)</td>
+                  <td class="tg-ss6j">
+                    <!-- <p id="value5"></p> -->
+                    {{ cal_data[7] }}
+                  </td>
+                  <td class="tg-ss6j"></td>
+                </tr>
+                <tr>
+                  <td class="tg-ss6j">칼슘(mg)</td>
+                  <td class="tg-ss6j">
+                    <!-- <p id="value6"></p> -->
+                    {{ cal_data[8] }}
+                  </td>
+                  <td class="tg-ss6j"></td>
+                </tr>
+                <tr>
+                  <td class="tg-ss6j">인(mg)</td>
+                  <td class="tg-ss6j">
+                    <!-- <p id="value7"></p> -->
+                    {{ cal_data[9] }}
+                  </td>
+                  <td class="tg-ss6j"></td>
+                </tr>
+                <tr>
+                  <td class="tg-ss6j">나트륨(mg)</td>
+                  <td class="tg-ss6j">
+                    <!-- <p id="value8"></p> -->
+                    {{ cal_data[10] }}
+                  </td>
+                  <td class="tg-ss6j"></td>
+                </tr>
+                <tr>
+                  <td class="tg-ss6j">칼륨(mg)</td>
+                  <td class="tg-ss6j">
+                    <!-- <p id="value9"></p> -->
+                    {{ cal_data[11] }}
+                  </td>
+                  <td class="tg-ss6j"></td>
+                </tr>
+                <tr>
+                  <td class="tg-ss6j">마그네슘(mg)</td>
+                  <td class="tg-ss6j">
+                    <!-- <p id="value10"></p> -->
+                    {{ cal_data[12] }}
+                  </td>
+                  <td class="tg-ss6j"></td>
+                </tr>
+                <tr>
+                  <td class="tg-ss6j">철(mg)</td>
+                  <td class="tg-ss6j">
+                    <!-- <p id="value11"></p> -->
+                    {{ cal_data[13] }}
+                  </td>
+                  <td class="tg-ss6j"></td>
+                </tr>
+                <tr>
+                  <td class="tg-ss6j">아연(mg)</td>
+                  <td class="tg-ss6j">
+                    <!-- <p id="value12"></p> -->
+                    {{ cal_data[14] }}
+                  </td>
+                  <td class="tg-ss6j"></td>
+                </tr>
+                <tr>
+                  <td class="tg-ss6j">콜레스테롤(g)</td>
+                  <td class="tg-ss6j">
+                    <!-- <p id="value13"></p> -->
+                    {{ cal_data[15] }}
+                  </td>
+                  <td class="tg-ss6j"></td>
+                </tr>
+                <tr>
+                  <td class="tg-ss6j">트랜스지방(g)</td>
+                  <td class="tg-ss6j">
+                    <!-- <p id="value14"></p> -->
+                    {{ cal_data[16] }}
+                  </td>
+                  <td class="tg-ss6j"></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>  
+   </div>
 
 </div>
 
 
 
 <script src="http://madalla.kr/js/jquery-1.8.3.min.js"></script>
-
-
-
-
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
   const app = new Vue({
     el: "#app",
     methods: {
+      test_get: () => {
+        axios("http://13.112.232.65:8999/user/", {
+          method: "post",
+          data: {
+            user_email: decodeURIComponent(document.cookie),
+          },
+        })
+          .then((response) => {
+            console.log(response.data)
+            if (response.data == true) {
+              localStorage.setItem('token', response.data['token']);
+              alert('login success');
+              window.location.href = 'http://13.112.232.65:2888/mainpage';
+            } else {
+              alert('change ID');
+              window.location.href = 'http://13.112.232.65:2888/login';
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
       test_post: () => {
         axios("http://13.112.232.65:8999/calorie/", {
           method: "post",
@@ -304,10 +231,72 @@
           });
       },
 
-
+        })
+          .then((response) => {
+            console.log(response.data)
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
+      test_delete: () => {
+        axios("http://13.112.232.65:8999/user/", {
+          method: "delete",
+        })
+          .then((response) => {
+            console.log(response.data)
+            if (response.data == true) {
+              alert('See you later');
+              window.location.href = 'http://13.112.232.65:2888/login';
+            } else {
+              alert('retry');
+              window.location.href = 'http://13.112.232.65:2888/login';
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
     },
   });
 </script>
+<script>
+  function upload() {
+    const imageInput = $("#imageInput")[0];
+    // 파일을 여러개 선택할 수 있으므로 files 라는 객체에 담긴다.
+    console.log("imageInput: ", imageInput.files)
 
+    if (imageInput.files.length === 0) {
+      alert("파일은 선택해주세요");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("image", imageInput.files[0]);
+    formData.append("user_email", decodeURIComponent(document.cookie));
+
+
+
+    $.ajax({
+      type: "POST",
+      url: "http://13.112.232.65:8999/image/",
+      processData: false,
+      contentType: false,
+      data: formData,
+      success: function (rtn) {
+        console.log("rtn: ", rtn)
+        yaGetBanner();
+        function yaGetBanner() {
+          var el = document.getElementById("yabanner");
+          var test = '/static/9.w.jpg'
+          el.innerHTML = "<img src='/static/" + rtn + "' alt='test' width='300px' height='300px'/>";
+        }
+      },
+      err: function (err) {
+        console.log("err:", err)
+      }
+    })
+  }
+</script>
 
 {% endblock %}
